@@ -49,6 +49,8 @@ The main.sh run 4 commands in order:
 3. It execute test.py file with 2 folders as argument, "test_style" and "test_content".
 4. It execute frame2video.py file. You have to change the path in the main.sh to the one on your computer to make it work.
 
+You should delete the ToReplace.txt in the folders. They were put to be able to push empty folders in the git.
+
 ## To run tests
 
 First, you have to select a picture of your choice in the "style" folder and put it in the "test_style" folder. Be careful when you upload your own style images as its dimensions can make the program fail when you execute "test.py".
