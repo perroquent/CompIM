@@ -6,6 +6,7 @@ from torchvision import transforms
 from torchvision.utils import save_image
 from model import Model
 from utils import extract_image_names_recursive
+import time
 
 trans = transforms.Compose([transforms.ToTensor()])
 
@@ -58,10 +59,10 @@ def main():
     content_batch = extract_image_names_recursive(content)
     style_batch = extract_image_names_recursive(style)
 
+    count = 0
     for j in style_batch:
         for i in content_batch:
-
-
+    
             c = Image.open(i)
             s = Image.open(j)
             c_tensor = trans(c).unsqueeze(0).to(device)
@@ -77,19 +78,29 @@ def main():
             save_image(out, f'test_result\{args.output_name}.jpg', nrow=1)
             """
             o = Image.open(f'{args.output_name}.jpg')
+
             demo = Image.new('RGB', (c.width * 2, c.height))
             o = o.resize(c.size)
             s = s.resize((i // 4 for i in c.size))
+
             demo.paste(c, (0, 0))
             demo.paste(o, (c.width, 0))
             demo.paste(s, (c.width, c.height - s.height))
             demo.save(f'result\{args.output_name}_style_transfer_demo.jpg', quality=95)
+
             o.paste(s,  (0, o.height - s.height))
             o.save(f'result\{args.output_name}_with_style_image.jpg', quality=95)
             """
-
+            count += 1
             print(f'result saved into the "result" file starting with {args.output_name}')
-
+            print(f"Iteration number {count}")
+    return count
 
 if __name__ == '__main__':
-    main()
+    
+    start_time = time.time()
+    count = main()
+    difference = (time.time() - start_time)
+    print("--- %s seconds ---" % difference)
+    difference = int(difference)
+    print(f"The process took {difference} seconds for {count} images. It's an average of {difference/count} sec per images.")
