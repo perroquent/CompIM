@@ -44,7 +44,7 @@ Here is how the wode works:
 The code was running on VS Code.
 
 The main.sh run 4 commands in order:
-1. It execute clean_forlder.py file that clean "test_result" and "test_content" folders
+1. It execute clean_folder.py file that clean "test_result" and "test_content" folders
 2. It execute video2frame.py file. You have to change the path in the main.sh to the one on your computer to make it work.
 3. It execute test.py file with 2 folders as argument, "test_style" and "test_content".
 4. It execute frame2video.py file. You have to change the path in the main.sh to the one on your computer to make it work.
@@ -60,7 +60,7 @@ Then you have to put a video with .mp4 format in the "videos" folder.
 It's better if the video is short (10 sec), otherwise it will take a lot of time.
 
 By then you should have one picture in "test_style" and your video in "videos".
-You should now to run the commands in the main.sh file on your terminal.
+You should now try to run the commands in the main.sh file on your terminal.
 
 There is few steps to follow:
 1. It will ask you for the name of your video. You should only give the name without the extension (Example if your video is called jojo.mp4, only write "jojo" in the terminal)
